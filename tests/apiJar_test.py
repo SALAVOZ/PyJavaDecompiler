@@ -23,6 +23,7 @@ class TestApiJar(unittest.TestCase):
         magic = file.getS4At(file.OFFSET_OF_MAGIC)
         minor = file.getU2At(file.OFFSET_OF_MINOR)
         major = file.getU2At(file.OFFSET_OF_MAJOR)
+        constant_pool = file.getU2At(file.OFFSET_OF_CONSTANT_POOL)
         constant_pool_count = file.getU2At(file.OFFSET_OF_CONSTANT_POOL_COUNT)
 
         self.assertEqual(magic, 0xCAFEBABE)
