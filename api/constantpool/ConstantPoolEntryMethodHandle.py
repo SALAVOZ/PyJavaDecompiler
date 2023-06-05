@@ -12,4 +12,4 @@ class ConstantPoolEntryMethodHandle(AbstractConstantPool):
         self.referenceIndex = class_file.getU2At(self.OFFSET_OF_REFERENCE_INDEX)
 
     def get_raw_byte_length(self):
-        return 9
+        return 4

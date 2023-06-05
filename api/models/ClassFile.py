@@ -26,7 +26,7 @@ class ClassFile:
                 ((self.bytecode[current_offset + offset + 2] & 0xFF) << 8) |
                 (self.bytecode[current_offset + offset + 3] & 0xFF))
 
-    def getU2At(self, offset: int) -> bytes:
+    def getU2At(self, offset: int) -> int:
         """Возвращает 2 байта"""
         current_offset = self.get_offset()
         return (((self.bytecode[current_offset + offset] & 0xFF) << 8)
@@ -56,6 +56,11 @@ class ClassFile:
     def getS1At(self, offset: int) -> bytes:
         current_offset = self.get_offset()
         return self.bytecode[current_offset + offset]
+
+    def get_bytes_at(self, count: int, offset: int) -> bytearray:
+        current_offset = self.get_offset()
+        res: bytearray = self.bytecode[current_offset + offset: current_offset + offset + count]
+        return res
 
     def get_offset(self):
         return self.offset

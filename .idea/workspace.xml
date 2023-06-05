@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b8f2ab85-ee63-4d8e-b8ce-0856a1f1ed2f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/ConstantPool.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/ConstantPool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryMethodHandle.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryMethodHandle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/models/ClassFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/ClassFile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/apiJar_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/apiJar_test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
