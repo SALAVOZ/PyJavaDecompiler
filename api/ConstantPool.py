@@ -1,7 +1,28 @@
+from api.BytecodeRecorder import BytecodeRecorder
+from api.constantpoolentries.ConstantPoolEntryClass import ConstantPoolEntryClass
+from api.constantpoolentries.ConstantPoolEntryDouble import ConstantPoolEntryDouble
+from api.constantpoolentries.ConstantPoolEntryDynamicInfo import ConstantPoolEntryDynamicInfo
+from api.constantpoolentries.ConstantPoolEntryFieldRef import ConstantPoolEntryFieldRef
+from api.constantpoolentries.ConstantPoolEntryFloat import ConstantPoolEntryFloat
+from api.constantpoolentries.ConstantPoolEntryInteger import ConstantPoolEntryInteger
+from api.constantpoolentries.ConstantPoolEntryInvokeDynamic import ConstantPoolEntryInvokeDynamic
+from api.constantpoolentries.ConstantPoolEntryLong import ConstantPoolEntryLong
+from api.constantpoolentries.ConstantPoolEntryMethodHandle import ConstantPoolEntryMethodHandle
+from api.constantpoolentries.ConstantPoolEntryMethodRef import ConstantPoolEntryMethodRef
+from api.constantpoolentries.ConstantPoolEntryMethodType import ConstantPoolEntryMethodType
+from api.constantpoolentries.ConstantPoolEntryModuleInfo import ConstantPoolEntryModuleInfo
+from api.constantpoolentries.ConstantPoolEntryNameAndType import ConstantPoolEntryNameAndType
+from api.constantpoolentries.ConstantPoolEntryPackageInfo import ConstantPoolEntryPackageInfo
+from api.constantpoolentries.ConstantPoolEntryString import ConstantPoolEntryString
+from api.constantpoolentries.ConstantPoolEntryUTF8 import ConstantPoolEntryUTF8
+from api.constantpoolentries.AbstractConstantPoolEntry import AbstractConstantPool
 
 
 class ConstantPool:
     def __init__(self):
+        self.length: int = 0
+        self.dynamic_constant = False
+        self.constant_pool_entries: list[AbstractConstantPool] = []
         self.CPT_UTF8 = 0
         self.CPT_Integer = 1
         self.CPT_Float = 2
@@ -37,7 +58,10 @@ class ConstantPool:
         self.VAL_ModuleInfo = 19
         self.VAL_PackageInfo = 20
 
-    def get(self, val: bytes):
+    def get_length(self):
+        return self.length
+
+    def get(self, val: int):
         match val:
             case self.VAL_UTF8:
                 return self.CPT_UTF8
@@ -76,4 +100,67 @@ class ConstantPool:
             case _:
                 raise ValueError("Invalid constant pool entry type : " + str(val))
 
-    
+    def process_row(self, bytecode_recorder: BytecodeRecorder, count: int) -> (list[AbstractConstantPool | None]):
+        constant_pool_entries: list[AbstractConstantPool | None] = []
+        dynamic_constant = False
+        count -= 1
+        bytecode_recorder.add_current_offset(bytecode_recorder.OFFSET_OF_CONSTANT_POOL)
+        for x in range(count):
+            b = bytecode_recorder.getS1At(0)
+            cpe: AbstractConstantPool
+            t = self.get(b)
+            match t:
+                case self.CPT_NameAndType:
+                    cpe = ConstantPoolEntryNameAndType(bytecode_recorder)
+                case self.CPT_String:
+                    cpe = ConstantPoolEntryString(bytecode_recorder)
+                case self.CPT_FieldRef:
+                    cpe = ConstantPoolEntryFieldRef(bytecode_recorder)
+                case self.CPT_MethodRef:
+                    cpe = ConstantPoolEntryMethodRef(bytecode_recorder, False)
+                case self.CPT_InterfaceMethodRef:
+                    cpe = ConstantPoolEntryMethodRef(bytecode_recorder, True)
+                case self.CPT_Class:
+                    cpe = ConstantPoolEntryClass(bytecode_recorder)
+                case self.CPT_Double:
+                    cpe = ConstantPoolEntryDouble(bytecode_recorder)
+                case self.CPT_Float:
+                    cpe = ConstantPoolEntryFloat(bytecode_recorder)
+                case self.CPT_Long:
+                    cpe = ConstantPoolEntryLong(bytecode_recorder)
+                case self.CPT_Integer:
+                    cpe = ConstantPoolEntryInteger(bytecode_recorder)
+                case self.CPT_UTF8:
+                    cpe = ConstantPoolEntryUTF8(bytecode_recorder)
+                case self.CPT_MethodHandle:
+                    cpe = ConstantPoolEntryMethodHandle(bytecode_recorder)
+                case self.CPT_MethodType:
+                    cpe = ConstantPoolEntryMethodType(bytecode_recorder)
+                case self.CPT_DynamicInfo:
+                    cpe = ConstantPoolEntryDynamicInfo(bytecode_recorder)
+                    dynamic_constant = True
+                case self.CPT_InvokeDynamic:
+                    cpe = ConstantPoolEntryInvokeDynamic(bytecode_recorder)
+                case self.CPT_ModuleInfo:
+                    cpe = ConstantPoolEntryModuleInfo(bytecode_recorder)
+                case self.CPT_PackageInfo:
+                    cpe = ConstantPoolEntryPackageInfo(bytecode_recorder)
+                case _:
+                    raise ValueError("Invalid constant pool entry : " + "")
+            constant_pool_entries.append(cpe)
+            match t:
+                case self.CPT_Double:
+                    pass
+                case self.CPT_Long:
+                    constant_pool_entries.append(None)
+            cpe_length = cpe.get_raw_byte_length()
+            bytecode_recorder.add_current_offset(cpe_length)
+            self.length += cpe_length
+        self.constant_pool_entries = constant_pool_entries
+        self.dynamic_constant = dynamic_constant
+        return constant_pool_entries
+
+    def get_entry(self, index: int):
+        if index > len(self.constant_pool_entries):
+            raise ValueError("To big offset")
+        return self.constant_pool_entries[index - 1]

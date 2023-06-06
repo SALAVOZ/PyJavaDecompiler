@@ -13,7 +13,7 @@ class MethodHandleBehaviour(enum.IntEnum):
     INVOKE_INTERFACE = 8
 
     @classmethod
-    def decode(cls, value: bytes):
+    def decode(cls, value: int):
         match value:
             case 1:
                 return cls.GET_FIELD

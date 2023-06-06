@@ -1,15 +1,15 @@
-from api.constantpool.AbstractConstantPoolEntry import AbstractConstantPool
-from api.models.ClassFile import ClassFile
+from api.constantpoolentries.AbstractConstantPoolEntry import AbstractConstantPool
+from api.BytecodeRecorder import BytecodeRecorder
 
 
 class ConstantPoolEntryUTF8(AbstractConstantPool):
-    def __init__(self, class_file: ClassFile):
-        super().__init__(class_file=class_file)
+    def __init__(self, bytecode_recorder: BytecodeRecorder):
+        super().__init__(bytecode_recorder=bytecode_recorder)
         self.OFFSET_OF_LENGTH = 1
         self.OFFSET_OF_DATA = 3
-        self.length: int = self.class_file.getU2At(self.OFFSET_OF_LENGTH)
-        self.bytes = self.class_file.get_bytes_at(self.length, self.OFFSET_OF_DATA)
-        self.out_chars: list[str] = ['' for _ in range(len(bytes))]
+        self.length: int = self.bytecode_recorder.getU2At(self.OFFSET_OF_LENGTH)
+        self.bytes = self.bytecode_recorder.get_bytes_at(self.length, self.OFFSET_OF_DATA)
+        self.out_chars: list[str] = ['' for _ in range(len(self.bytes) + 1)]
         self.tmp_value: str
         out: int = 0
         try:

@@ -1,41 +1,15 @@
-from api.BytecodeRecorder import BytecodeRecorder
-from api.ConstantPool import ConstantPool
 import struct
 
 
-class ClassFile:
-    def __init__(self, filename: str, bytecode):
-        self.filename: str = filename
+class BytecodeRecorder:
+    def __init__(self, bytecode: bytes):
+        self.current_position = 0
         self.bytecode = bytecode
-        self.offset: int = 0
         self.OFFSET_OF_MAGIC = 0
         self.OFFSET_OF_MINOR = 4
         self.OFFSET_OF_MAJOR = 6
         self.OFFSET_OF_CONSTANT_POOL_COUNT = 8
         self.OFFSET_OF_CONSTANT_POOL = 10
-        '''
-        Парсим байткод
-        '''
-        self.magic = self.getS4At(self.OFFSET_OF_MAGIC)
-        self.minor = self.getU2At(self.OFFSET_OF_MINOR)
-        self.major = self.getU2At(self.OFFSET_OF_MAJOR)
-        self.constant_pool_count = self.getU2At(self.OFFSET_OF_CONSTANT_POOL_COUNT)
-        self.constant_pool = ConstantPool()
-        bytecode_recorder = BytecodeRecorder(bytecode=bytecode)
-        self.constant_pool.process_row(bytecode_recorder=bytecode_recorder, count=self.constant_pool_count)
-        self.OFFSET_OF_ACCESS_FLAGS = self.OFFSET_OF_CONSTANT_POOL + self.constant_pool.get_length()
-        self.OFFSET_OF_THIS_CLASS = self.OFFSET_OF_ACCESS_FLAGS + 2
-        self.OFFSET_OF_SUPER_CLASS = self.OFFSET_OF_THIS_CLASS + 2
-        self.OFFSET_OF_INTERFACES_COUNT = self.OFFSET_OF_SUPER_CLASS + 2
-        self.OFFSET_OF_INTERFACES = self.OFFSET_OF_INTERFACES_COUNT + 2
-        self.interfaces_count = bytecode_recorder.getU2At(self.OFFSET_OF_INTERFACES_COUNT)
-
-
-    def get_bytecode(self):
-        return self.bytecode
-
-    def get_filename(self):
-        return self.filename
 
     def getS4At(self, offset: int) -> int:
         """Возвращает первые 4 байта"""
@@ -76,13 +50,13 @@ class ClassFile:
         current_offset = self.get_offset()
         return self.bytecode[current_offset + offset]
 
-    def get_bytes_at(self, count: int, offset: int) -> bytearray:
+    def get_bytes_at(self, count: int, offset: int) -> bytes:
         current_offset = self.get_offset()
-        res: bytearray = self.bytecode[current_offset + offset: current_offset + offset + count]
+        res: bytes = self.bytecode[current_offset + offset: current_offset + offset + count]
         return res
 
     def get_offset(self):
-        return self.offset
+        return self.current_position
 
     def add_current_offset(self, to_add: int):
-        self.offset += to_add
+        self.current_position += to_add
