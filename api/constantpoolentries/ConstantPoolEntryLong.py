@@ -9,3 +9,6 @@ class ConstantPoolEntryLong(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 9
+
+    def __str__(self):
+        return 'CONSTANT_Long[' + str(self.value) + ']'

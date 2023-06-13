@@ -104,7 +104,7 @@ class ConstantPool:
         constant_pool_entries: list[AbstractConstantPool | None] = []
         dynamic_constant = False
         count -= 1
-        bytecode_recorder.add_current_offset(bytecode_recorder.OFFSET_OF_CONSTANT_POOL)
+        bytecode_recorder.change_to_tmp_offset(bytecode_recorder.OFFSET_OF_CONSTANT_POOL)
         for x in range(count):
             b = bytecode_recorder.getS1At(0)
             cpe: AbstractConstantPool
@@ -158,9 +158,10 @@ class ConstantPool:
             self.length += cpe_length
         self.constant_pool_entries = constant_pool_entries
         self.dynamic_constant = dynamic_constant
+        bytecode_recorder.change_to_current_offset()
         return constant_pool_entries
 
-    def get_entry(self, index: int):
-        if index > len(self.constant_pool_entries):
+    def get_entry(self, offset: int):
+        if offset > len(self.constant_pool_entries):
             raise ValueError("To big offset")
-        return self.constant_pool_entries[index - 1]
+        return self.constant_pool_entries[offset - 1]

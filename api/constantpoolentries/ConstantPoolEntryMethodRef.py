@@ -13,3 +13,6 @@ class ConstantPoolEntryMethodRef(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 5
+
+    def __str__(self):
+        return 'Method classIndex ' + str(self.class_index) + ' nameAndTypeIndex ' + str(self.name_and_type_index)

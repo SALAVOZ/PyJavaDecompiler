@@ -10,3 +10,9 @@ class ConstantPoolEntryClass(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 3
+
+    def dump(self):
+        pass
+
+    def __str__(self):
+        return 'CONSTANT_Class ' + str(self.nameIndex)

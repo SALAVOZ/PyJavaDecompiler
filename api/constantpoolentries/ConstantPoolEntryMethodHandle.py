@@ -13,3 +13,9 @@ class ConstantPoolEntryMethodHandle(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 4
+
+    def __str__(self):
+        return 'MethodHandle value=' + \
+               str(self.referenceKind) + \
+               ',' + \
+               str(self.referenceIndex)

@@ -12,3 +12,9 @@ class ConstantPoolEntryInvokeDynamic(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 5
+
+    def __str__(self):
+        return "InvokeDynamic value=" + \
+               str(self.bootstrapMethodAttrIndex) + \
+               "," + \
+               str(self.nameAndTypeIndex)

@@ -43,3 +43,6 @@ class ConstantPoolEntryUTF8(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 3 + self.length
+
+    def __str__(self):
+        return "ConstantUTF8[" + self.value + "]"

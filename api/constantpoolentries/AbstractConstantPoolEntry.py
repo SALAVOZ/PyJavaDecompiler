@@ -10,3 +10,7 @@ class AbstractConstantPool(ABC):
     @abstractmethod
     def get_raw_byte_length(self):
         pass
+
+    #@abstractmethod
+    #def dump(self):
+    #    pass

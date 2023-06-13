@@ -5,8 +5,9 @@ import unittest
 
 class TestApiJar(unittest.TestCase):
     def setUp(self) -> None:
+        self.file_1 = 'C:\\diplom\\common-7.4.4\\com\\cloudera\\cmf\\BelongsTo.class'
         self.file = 'C:\\diplom\\common-7.4.4\\com\\cloudera\\cmf\\AuthorityAware.class'
-        self.jar  =  'C:\\diplom\\common-7.4.4.jar'
+        self.jar = 'C:\\diplom\\common-7.4.4.jar'
 
     def test_get_info_list(self):
         api_jar = ApiJar(self.file)

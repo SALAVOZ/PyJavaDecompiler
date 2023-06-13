@@ -3,26 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="b8f2ab85-ee63-4d8e-b8ce-0856a1f1ed2f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/BytecodeAnalyzer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/ApiJar.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/ApiJar.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/BytecodeRecorder.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/BytecodeRecorder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/ConstantPool.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/ConstantPool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/AbstractConstantPoolEntry.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/AbstractConstantPoolEntry.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryClass.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryDouble.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryDouble.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryDynamicInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryDynamicInfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryFieldRef.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryFieldRef.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryFloat.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryFloat.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryInteger.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryInteger.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryInvokeDynamic.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryInvokeDynamic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryLong.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryLong.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryMethodHandle.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodHandle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryMethodRef.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodRef.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryMethodType.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodType.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryModuleInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryModuleInfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryNameAndType.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryNameAndType.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryPackageInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryPackageInfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryString.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryString.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/ConstantPoolEntryUTF8.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryUTF8.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/constantpool/MethodHandleBehaviour.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/MethodHandleBehaviour.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/AbstractConstantPoolEntry.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/AbstractConstantPoolEntry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryDynamicInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryDynamicInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryFieldRef.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryFieldRef.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryInteger.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryInteger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryInvokeDynamic.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryInvokeDynamic.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryLong.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryLong.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodHandle.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodHandle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodRef.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodRef.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodType.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryMethodType.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryModuleInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryModuleInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryNameAndType.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryNameAndType.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryPackageInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryPackageInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryUTF8.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/constantpoolentries/ConstantPoolEntryUTF8.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/models/ClassFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/ClassFile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/apiJar_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/apiJar_test.py" afterDir="false" />
     </list>
@@ -50,12 +47,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/diplom/PyJavaDecompiler"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Python tests.Python tests for apiJar_test.TestApiJar.test_getS4At">
     <configuration name="Python tests for apiJar_test.TestApiJar.test_getS4At" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="PyJavaDecompiler" />
@@ -134,33 +132,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/apiJar_test.py</url>
-          <line>11</line>
+          <line>12</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/apiJar_test.py</url>
-          <line>18</line>
+          <line>19</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/apiJar_test.py</url>
-          <line>30</line>
+          <line>31</line>
           <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/api/ConstantPool.py</url>
-          <line>149</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/api/ConstantPool.py</url>
-          <line>110</line>
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/api/ConstantPool.py</url>
-          <line>160</line>
-          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

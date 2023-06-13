@@ -12,3 +12,9 @@ class ConstantPoolEntryDynamicInfo(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 5
+
+    def __str__(self):
+        return 'DynamicInfo value=' + \
+               str(self.bootstrapMethodInfoAttrIndex) + \
+               ',' + \
+               str(self.nameAndTypeIndex)

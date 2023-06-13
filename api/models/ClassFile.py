@@ -1,5 +1,7 @@
 from api.BytecodeRecorder import BytecodeRecorder
 from api.ConstantPool import ConstantPool
+from api.constantpoolentries.ConstantPoolEntryClass import ConstantPoolEntryClass
+from api.constantpoolentries.AcessFlagEnum import AccessFlag
 import struct
 
 
@@ -17,6 +19,8 @@ class ClassFile:
         Парсим байткод
         '''
         self.magic = self.getS4At(self.OFFSET_OF_MAGIC)
+        if self.magic != 0xCAFEBABE:
+            raise ValueError('magic bytes are invalid!')
         self.minor = self.getU2At(self.OFFSET_OF_MINOR)
         self.major = self.getU2At(self.OFFSET_OF_MAJOR)
         self.constant_pool_count = self.getU2At(self.OFFSET_OF_CONSTANT_POOL_COUNT)
@@ -28,7 +32,11 @@ class ClassFile:
         self.OFFSET_OF_SUPER_CLASS = self.OFFSET_OF_THIS_CLASS + 2
         self.OFFSET_OF_INTERFACES_COUNT = self.OFFSET_OF_SUPER_CLASS + 2
         self.OFFSET_OF_INTERFACES = self.OFFSET_OF_INTERFACES_COUNT + 2
-        self.interfaces_count = bytecode_recorder.getU2At(self.OFFSET_OF_INTERFACES_COUNT)
+        self.interfaces_count = bytecode_recorder.getU2At(self.OFFSET_OF_INTERFACES_COUNT, from_zero=True)
+        self.tmp_interfaces = self.get_interfaces(bytecode_recorder, self.OFFSET_OF_INTERFACES, self.interfaces_count)
+        self.this_class = bytecode_recorder.getU2At(self.OFFSET_OF_THIS_CLASS, from_zero=True)
+        access_flag_raw = bytecode_recorder.getU2At(self.OFFSET_OF_ACCESS_FLAGS, from_zero=True)
+        self.access_flags = AccessFlag.get_access_flags(access_flag_raw)
 
 
     def get_bytecode(self):
@@ -86,3 +94,13 @@ class ClassFile:
 
     def add_current_offset(self, to_add: int):
         self.offset += to_add
+
+    def get_interfaces(self, bytecode_recorder: BytecodeRecorder, interfaces_offset: int, interfaces_count: int) -> list[ConstantPoolEntryClass]:
+        interfaces: list[ConstantPoolEntryClass] = []
+        for _ in range(interfaces_count):
+            bytecode_recorder.change_to_tmp_offset(interfaces_offset)
+            offset: int = bytecode_recorder.getU2At(0)
+            bytecode_recorder.add_current_offset(2)
+            java_class = self.constant_pool.get_entry(offset)
+            interfaces.append(java_class)
+        return interfaces

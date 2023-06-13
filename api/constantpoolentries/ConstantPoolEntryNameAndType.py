@@ -12,3 +12,9 @@ class ConstantPoolEntryNameAndType(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 5
+
+    def __str__(self):
+        return "CONSTANT_NameAndType nameIndex=" + \
+               str(self.name_index) + \
+               ", descriptorIndex=" + \
+               str(self.descriptor_index)

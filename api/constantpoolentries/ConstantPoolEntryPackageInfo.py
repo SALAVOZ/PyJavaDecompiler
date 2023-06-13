@@ -10,3 +10,6 @@ class ConstantPoolEntryPackageInfo(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 3
+
+    def __str__(self):
+        return "NameIndex value=" + str(self.name_index)

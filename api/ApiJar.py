@@ -1,5 +1,3 @@
-from typing import List, Type
-
 from api.models import ClassFile
 from api.models.ClassFile import ClassFile
 import zipfile

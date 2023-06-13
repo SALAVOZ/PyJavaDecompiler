@@ -12,3 +12,10 @@ class ConstantPoolEntryFieldRef(AbstractConstantPool):
 
     def get_raw_byte_length(self):
         return 5
+
+    def __str__(self):
+        return "ConstantPool_FieldRef [classIndex:" + \
+               str(self.classIndex) + \
+               ", nameAndTypeIndex:" + \
+               str(self.nameAndTypeIndex)\
+               + "]"
